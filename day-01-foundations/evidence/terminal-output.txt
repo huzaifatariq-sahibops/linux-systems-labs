@@ -1,0 +1,49 @@
+Sanitized terminal evidence
+Date performed: 2026-09-20
+
+$ whoami
+huzaifa-tariq
+
+$ pwd
+/home/huzaifa-tariq/linux-systems-labs/day-01-foundations
+
+$ uname -srm
+Linux 6.18.33.2-microsoft-standard-WSL2 x86_64
+
+$ cat /etc/os-release
+PRETTY_NAME="Ubuntu 24.04.1 LTS"
+NAME="Ubuntu"
+VERSION_ID="24.04"
+VERSION="24.04.1 LTS (Noble Numbat)"
+VERSION_CODENAME=noble
+ID=ubuntu
+ID_LIKE=debian
+UBUNTU_CODENAME=noble
+
+$ cd demo
+$ touch file.txt
+$ printf 'Hello from Huzaifa Day 1 Linux lab\n' > file.txt
+$ ls -la
+total 12
+drwxr-xr-x 2 huzaifa-tariq huzaifa-tariq 4096 Sep 20 20:08 .
+drwxr-xr-x 3 huzaifa-tariq huzaifa-tariq 4096 Sep 20 20:08 ..
+-rw-r--r-- 1 huzaifa-tariq huzaifa-tariq   35 Sep 20 20:08 file.txt
+
+$ cat file.txt
+Hello from Huzaifa Day 1 Linux lab
+
+$ python3 -m http.server 8000 --bind 127.0.0.1
+Serving HTTP on 127.0.0.1 port 8000 (http://127.0.0.1:8000/) ...
+127.0.0.1 - - [20/Sep/2026 20:09:50] "GET /file.txt HTTP/1.1" 200 -
+^C
+Keyboard interrupt received, exiting.
+
+$ curl -i http://127.0.0.1:8000/file.txt
+HTTP/1.0 200 OK
+Server: SimpleHTTP/0.6 Python/3.12.3
+Content-type: text/plain
+Content-Length: 35
+
+Hello from Huzaifa Day 1 Linux lab
+
+Privacy note: the original shell prompt contained a Windows device hostname. It was removed before publication.
