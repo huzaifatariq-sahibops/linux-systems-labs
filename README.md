@@ -24,6 +24,19 @@ I practised:
 
 See [Day 1: Foundations](day-01-foundations/README.md).
 
+### Day 2 — Networking Foundations
+
+I practised:
+
+- resolving a domain name to IPv4 addresses;
+- inspecting local network interfaces and routes;
+- interpreting a private IP address, default gateway, and loopback address;
+- verifying that the OpenSSH client was installed;
+- running a service on local port `8080` and checking its listening socket;
+- comparing successful local HTTP and public HTTPS responses.
+
+See [Day 2: Networking](day-02-networking/README.md).
+
 ## Evidence standard
 
 Every completed lab should include:

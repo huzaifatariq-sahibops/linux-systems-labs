@@ -1,0 +1,52 @@
+Day 2 networking lab — sanitized terminal evidence
+Performed: 2026-09-30 PKT (2026-09-29 UTC)
+
+$ mkdir -p ~/linux-systems-labs/day-02-networking
+$ cd ~/linux-systems-labs/day-02-networking
+$ printf 'Day 2 networking lab\n' > index.html
+
+$ getent ahostsv4 example.com
+[resolved IPv4 address]  STREAM example.com
+[resolved IPv4 address]  DGRAM
+[resolved IPv4 address]  RAW
+[resolved IPv4 address]  STREAM
+[resolved IPv4 address]  DGRAM
+[resolved IPv4 address]  RAW
+
+$ ip -4 -brief address
+lo               UNKNOWN        127.0.0.1/8
+eth0             UP             [private WSL IPv4]/20
+docker0          DOWN           [private Docker IPv4]/16
+
+$ ip route
+default via [private WSL gateway] dev eth0 proto kernel
+[private Docker subnet] dev docker0 proto kernel scope link linkdown
+[private WSL subnet] dev eth0 proto kernel scope link
+
+$ ssh -V
+OpenSSH_9.6p1 Ubuntu-3ubuntu13.19, OpenSSL 3.0.13 30 Jan 2024
+
+$ python3 -m http.server 8080 --bind 127.0.0.1
+Serving HTTP on 127.0.0.1 port 8080 (http://127.0.0.1:8080/) ...
+127.0.0.1 - - [timestamp removed] "HEAD / HTTP/1.1" 200 -
+^C
+Keyboard interrupt received, exiting.
+
+$ curl -I http://127.0.0.1:8080/
+HTTP/1.0 200 OK
+Server: SimpleHTTP/0.6 Python/3.12.3
+Content-type: text/html
+Content-Length: 21
+
+$ ss -ltn 'sport = :8080'
+State   Recv-Q  Send-Q  Local Address:Port  Peer Address:Port
+LISTEN  0       5       127.0.0.1:8080     0.0.0.0:*
+
+$ curl -I https://example.com/
+HTTP/2 200
+content-type: text/html; charset=utf-8
+server: cloudflare
+
+Privacy note:
+The Windows hostname, private interface and gateway addresses, transient DNS
+answers, timestamps, and unique CDN request metadata were removed or generalized.
