@@ -37,6 +37,18 @@ I practised:
 
 See [Day 2: Networking](day-02-networking/README.md).
 
+### Day 3 — Cloud Computing Models
+
+I practised:
+
+- distinguishing on-premises, Infrastructure as a Service (IaaS), Platform as a Service (PaaS), and Software as a Service (SaaS);
+- identifying which responsibilities remain with the customer in each model;
+- creating and executing a Bash responsibility checker;
+- checking Bash syntax separately from program behavior;
+- handling unsupported input with a non-zero exit code.
+
+See [Day 3: Cloud Computing](day-03-cloud-computing/README.md).
+
 ## Evidence standard
 
 Every completed lab should include:

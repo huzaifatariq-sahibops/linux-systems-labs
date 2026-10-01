@@ -1,0 +1,34 @@
+Day 3 cloud-computing lab — sanitized terminal evidence
+Performed: 2026-10-01
+
+$ mkdir -p ~/linux-systems-labs/day-03-cloud-computing
+$ cd ~/linux-systems-labs/day-03-cloud-computing
+$ nano cloud-model-check.sh
+$ chmod +x cloud-model-check.sh
+
+$ bash -n cloud-model-check.sh
+[no output: Bash found no syntax error]
+
+$ ./cloud-model-check.sh iaas
+Provider manages: hardware, networking, and virtualization
+Customer manages: OS, runtime, applications, and data
+
+$ ./cloud-model-check.sh paas
+Provider manages: infrastructure, OS, and runtime
+Customer manages: applications and data
+
+$ ./cloud-model-check.sh saas
+Provider manages: the complete application platform
+Customer manages: users, access, configuration, and data
+
+$ ./cloud-model-check.sh on-prem
+Customer manages: hardware, networking, OS, runtime, applications, and data
+
+$ ./cloud-model-check.sh unknown
+Usage: ./cloud-model-check.sh {on-prem|iaas|paas|saas}
+
+$ echo "Exit code: $?"
+Exit code: 2
+
+Privacy note:
+The terminal username, Windows hostname, and home-directory prompt were removed.
