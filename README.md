@@ -49,6 +49,19 @@ I practised:
 
 See [Day 3: Cloud Computing](day-03-cloud-computing/README.md).
 
+### Day 4 — Software Application
+
+I practised:
+
+- connecting an HTML frontend to a Python backend route;
+- returning application data as JavaScript Object Notation (JSON);
+- storing a visit counter in an on-disk SQLite database;
+- verifying that stored data survives a server restart;
+- distinguishing `200 OK`, `404 Not Found`, and a connection failure;
+- finding and correcting an accidentally copied line in the frontend.
+
+See [Day 4: Software Application](day-04-software-application/README.md).
+
 ## Evidence standard
 
 Every completed lab should include:

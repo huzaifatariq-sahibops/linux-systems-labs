@@ -1,0 +1,46 @@
+Day 4 software-application lab — sanitized terminal evidence
+Performed: 2026-10-01
+
+$ python3 app.py
+Application running at http://127.0.0.1:8004
+
+$ curl -i http://127.0.0.1:8004/
+HTTP/1.0 200 OK
+Content-Type: text/html; charset=utf-8
+
+<!doctype html>
+<html lang="en">
+[remaining HTML abbreviated]
+
+$ curl -s http://127.0.0.1:8004/api/visits
+{"visits": 1}
+
+$ curl -s http://127.0.0.1:8004/api/visits
+{"visits": 2}
+
+$ python3 -c 'import sqlite3; print(sqlite3.connect("app.db").execute("SELECT visits FROM counter WHERE id = 1").fetchone()[0])'
+2
+
+$ curl -i http://127.0.0.1:8004/missing
+HTTP/1.0 404 Not Found
+Content-Type: text/plain
+
+Not found
+
+After correcting an accidentally copied first line and restarting the server:
+
+$ curl -s http://127.0.0.1:8004/ | sed -n '1,4p'
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+$ curl -s http://127.0.0.1:8004/api/visits
+{"visits": 4}
+
+The increased value after the restart showed that SQLite had preserved the
+counter in app.db on disk.
+
+Privacy note:
+The terminal username, Windows hostname, prompts, timestamps, and changing
+request metadata were removed.
